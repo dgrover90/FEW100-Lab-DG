@@ -7,6 +7,7 @@ let tipPercent: HTMLElement;
 let tip: HTMLElement;
 let finalBill: HTMLElement;
 let tipDisplay: HTMLElement;
+let billInput: HTMLInputElement;
 let tipAmount: number;
 
 export function runApp() {
@@ -20,6 +21,7 @@ export function runApp() {
         tip = document.getElementById('tipAmount'); // tip amount display
         finalBill = document.getElementById('finalBill'); // final bill information display
         tipDisplay = document.getElementById('tipDisplay'); // tip display for verbiage
+        billInput = (<HTMLInputElement>document.getElementById('billInput')) // input element for bill value
 
         tipButtons.forEach((button: HTMLButtonElement, index) => {
             if (button.disabled === true) {
@@ -47,23 +49,25 @@ function handleTipChange(evt) {
             button.disabled = false;
         }
     })
+
+    handleKeyUpEventForBillInput(evt);
 }
 
 function handleKeyUpEventForBillInput(evt) {
-    const bill: number = this.value;
+    const bill: number = +billInput.value;
 
     if (bill > 0)
     {
-        this.classList.remove('error');
+        billInput.classList.remove('error');
         const calcTip = calculateTip(bill, tipAmount);
         const calcBill = calculateTotalBill(bill, calcTip);
 
-        totalBill.innerText = `$${format(this.value,2)}`;
+        totalBill.innerText = `$${format(bill,2)}`;
         tipPercent.innerText = `${tipAmount}%`;
         tip.innerText = `$${format(calcTip,2)}`;
         finalBill.innerText = `$${format(calcBill,2)}`;
     } else {
-        this.classList.add('error');
+        billInput.classList.add('error');
     }
 
 }

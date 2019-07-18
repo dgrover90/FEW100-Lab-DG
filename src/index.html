@@ -4,16 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Webpack Showcase</title>
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 
 <body>
     <div class="container">
         <header class="page-header">
-            <h1>Web Dev</h1>
-            <h2>Super Awesome</h2>
+            <h1>Tip Calculator</h1>
         </header>
-
+        <form>
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                </div>
+                <input type="number" class="form-control" id="billInput">
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" id="10percent" value="10" class="btn btn-secondary">10%</button>
+                <button type="button" id="15percent" value="15" class="btn btn-secondary">15%</button>
+                <button disabled type="button" id="20percent" value="20" class="btn btn-secondary">20%</button>
+            </div>
+            <div>
+                You are tipping: <span id="tipDisplay"></span>%
+            </div>
+        </form>
+        <ul class="list-group">
+            <li class="list-group-item">Total bill: <span id="totalBill"></span></li>
+            <li class="list-group-item">Tip Percentage: <span id="tipPercentage"></span></li>
+            <li class="list-group-item">Amount of tip: <span id="tipAmount"></span></li>
+            <li class="list-group-item">Total to be Paid: <span id="finalBill"></span></li>
+          </ul>
     </div>
 </body>
 
